@@ -1,11 +1,14 @@
 package managers;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+/**
+ * DriverManager class contains methods manage the WebDriver.
+ * For now, it only has support for Chrome.
+ */
 public class DriverManager {
 
     private static WebDriver driver;
@@ -17,7 +20,7 @@ public class DriverManager {
 
     private static ChromeOptions setBasicChromeOptions(){
         ChromeOptions chromeOptions = new ChromeOptions();
-        //chromeOptions.addArguments("--headless=new");
+        chromeOptions.addArguments("--headless=new");
         chromeOptions.addArguments("--remote-allow-origins=*");
         chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
         chromeOptions.addArguments("--disable-extensions");

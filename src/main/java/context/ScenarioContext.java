@@ -7,7 +7,7 @@ public class ScenarioContext {
     private Map<String, Object> scenarioContext;
 
     /**
-     * Store information in a HashMap in order to reuse them in different steps.
+     * ScenarioContext store information in a HashMap in order to reuse them in the different steps of an scenario.
      */
     public ScenarioContext(){
         scenarioContext = new HashMap<String, Object>();

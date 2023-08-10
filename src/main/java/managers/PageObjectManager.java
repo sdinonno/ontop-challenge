@@ -5,6 +5,11 @@ import pages.HomePage;
 import pages.ProductPage;
 import pages.SearchResultsPage;
 
+/**
+ * Page Object Manager create the page's object and make sure that
+ * the same object should not be created again and again.
+ */
+
 public class PageObjectManager {
     private WebDriver driver;
     private HomePage homePage;

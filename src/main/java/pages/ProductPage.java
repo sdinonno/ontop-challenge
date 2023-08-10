@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProductPage extends BasePage {
 
     @FindBy(id = "productTitle")
@@ -17,11 +20,8 @@ public class ProductPage extends BasePage {
     @FindBy(css = "#averageCustomerReviews_feature_div a.a-popover-trigger span.a-size-base")
     private WebElement productRating;
 
-    @FindBy(css = "#renewedProgramDescriptionAtf_feature_div  h5")
-    private WebElement productDescriptionTitle;
-
-    @FindBy(css = "#renewedProgramDescriptionAtf_feature_div  span")
-    private WebElement productDescription;
+    @FindBy(css = "#feature-bullets .a-spacing-mini span")
+    private List<WebElement> descriptionItems;
 
     public ProductPage(WebDriver driver) {
         super(driver);
@@ -39,21 +39,29 @@ public class ProductPage extends BasePage {
 
         Double price = extractPrice(priceText);
         double rating = extractRating(ratingText);
-
-        String title = productTitle.getText();
-        String descriptionTitle = productDescriptionTitle.getText();
-        String description = productDescription.getText();
         String url = getUrl();
 
-        return new Product(title, price, rating, descriptionTitle, description, url);
+        return new Product(getProductTitle(), price, rating, getDescription(), url);
+    }
+
+    private String getDescription(){
+        List<String> texts = new ArrayList<>();
+        for (WebElement e : descriptionItems) {
+            texts.add(e.getText());
+        }
+        return String.join(" ", texts);
+    }
+
+    private String getProductTitle(){
+        return productTitle.getText();
     }
 
     private Double extractPrice(String priceText) {
         try {
-            return Double.parseDouble(priceText.replace("US$", ""));
+            return Double.parseDouble(priceText.replace("US$", "").replace(",", ""));
         } catch (NumberFormatException e) {
-            // Handle the exception appropriately (e.g., log an error, provide a default value)
-            return 0.00; // Default value for price if parsing fails
+            System.err.println("Error when try to parse the price: " + e.getMessage());
+            return 0.00;
         }
     }
 
@@ -61,8 +69,8 @@ public class ProductPage extends BasePage {
         try {
             return Double.parseDouble(ratingText);
         } catch (NumberFormatException e) {
-            // Handle the exception appropriately (e.g., log an error, provide a default value)
-            return 0.0; // Default value for rating if parsing fails
+            System.err.println("Error when try to parse the rating: " + e.getMessage());
+            return 0.0;
         }
     }
 }
