@@ -20,7 +20,7 @@ public class DriverManager {
 
     private static ChromeOptions setBasicChromeOptions(){
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--headless=new");
+        //chromeOptions.addArguments("--headless=new");
         chromeOptions.addArguments("--remote-allow-origins=*");
         chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
         chromeOptions.addArguments("--disable-extensions");
