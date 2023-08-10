@@ -16,7 +16,7 @@ If Amazon does not detect the WebDriver as a bot, you should see the following p
 ![amazon-ok.png](md-files%2Famazon-ok.png)
 
 ## Tech stack
-* Java 8 or higher (https://www.oracle.com/java/technologies/downloads)
+* Java 11 or higher (https://www.oracle.com/java/technologies/downloads)
 * Maven 3.8.3 or higher (https://maven.apache.org/download.cgi)
 * Selenium
 * TestNG
@@ -82,7 +82,7 @@ I have applied Page Object Model pattern in order to enhance test maintainabilit
 
 Additionally, I have employed Dependency Injection in my Cucumber-based test framework to efficiently share contextual information, such as test data and state, between different steps within the same scenario. This approach enables me to maintain a clear separation of concerns and improve the overall organization of my test code.
 
-Last but not least, I have added a GitHub Action workflow to run the tests when a new PR is 
+Last but not least, I’ve added a GitHub Action workflow to run the tests when there’s a new pull request merge or push in main.
 
 ## Next steps (improvements)
 * Adapt WebDriver options to be able to run the test in a mobile view.
