@@ -1,5 +1,8 @@
 package steps;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import context.Context;
 import context.TestContext;
 import io.cucumber.java.en.And;
@@ -12,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static steps.Hooks.test;
 import static utils.Screenshots.takeScreenshot;
 
 public class ProductStepdefs {
@@ -20,9 +24,9 @@ public class ProductStepdefs {
     private List<Product> products;
 
     public ProductStepdefs(TestContext context){
-        testContext = context;
-        productPage = context.getPageObjectManager().getProductPage();
-        products = new ArrayList<>();
+        this.testContext = context;
+        this.productPage = context.getPageObjectManager().getProductPage();
+        this.products = new ArrayList<>();
     }
     @And("the user validates the product details")
     public void theUserValidatesTheProductDetails() throws IOException {
@@ -41,6 +45,6 @@ public class ProductStepdefs {
     public void theUserValidatesTheProductsAreDifferent() {
         Product firstProduct = products.get(0);
         Product secondProduct = products.get(1);
-        Assert.assertNotEquals(firstProduct, secondProduct);
+        Assert.assertNotEquals(firstProduct, secondProduct, "Products are equals.");
     }
 }

@@ -7,7 +7,7 @@ import org.testng.annotations.DataProvider;
         features = "src/test/resources/features",
         glue = "steps",
         tags = "@regression",
-        plugin = {"progress", "html:reports/report.html"}
+        plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 )
 
 public class RunCucumberTest extends AbstractTestNGCucumberTests {
