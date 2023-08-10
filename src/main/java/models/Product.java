@@ -13,11 +13,10 @@ public class Product {
     private String description;
     private String url;
 
-    public Product(String title, Double price, Double rating, String descriptionTitle, String description, String url){
+    public Product(String title, Double price, Double rating, String description, String url){
         this.title = title;
         this.price = price;
         this.rating = rating;
-        this.descriptionTitle = descriptionTitle;
         this.description = description;
         this.url = url;
     }
@@ -44,14 +43,6 @@ public class Product {
 
     public void setRating(Double rating) {
         this.rating = rating;
-    }
-
-    public String getDescriptionTitle() {
-        return descriptionTitle;
-    }
-
-    public void setDescriptionTitle(String descriptionTitle) {
-        this.descriptionTitle = descriptionTitle;
     }
 
     public String getDescription() {

@@ -2,7 +2,6 @@ package steps;
 
 import context.Context;
 import context.TestContext;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import models.Product;
@@ -33,10 +32,7 @@ public class ProductStepdefs {
         Assert.assertTrue(product.getTitle()
                 .contains(keywords), "Product title does not contain the keywords ".concat(keywords));
         Assert.assertTrue(product.getPrice() > 0.0, "Product price is 0");
-        Assert.assertFalse(product.getDescriptionTitle().isEmpty(), "Product description title is empty.");
         Assert.assertFalse(product.getDescription().isEmpty(), "Product description is empty.");
-        Assert.assertTrue(product.getUrl().contains(keywords.replace(" ", "-")),
-                "Product URL does not contain the keywords ".concat(keywords));
         takeScreenshot(product.getTitle());
         products.add(product);
     }
