@@ -30,7 +30,6 @@ public class Hooks {
         if(scenario.isFailed()){
             takeScreenshot(scenario, "Failed test screenshot >>");
         }
-        test.log(Status.INFO, "SCENARIO " + scenario.getStatus());
         quitDriver();
     }
 }
