@@ -19,7 +19,7 @@ public class Screenshots {
     public static void takeScreenshot(Scenario scn, String name) {
         try{
             byte[] screenshot = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
-            scn.attach(screenshot, "image/png", name);
+            scn.attach(screenshot, "image/png", name + ".png");
         }
         catch (Exception e){
             System.out.println("Exception while taking ScreenShot "+e.getMessage());
@@ -27,14 +27,14 @@ public class Screenshots {
     }
 
     /**
-     * Method to take an screenshot and save it as a File.
+     * Method to take a screenshot and save it as a File.
      * @param name Screenshot name
      * @throws IOException
      */
     public static void takeScreenshot(String name) throws IOException {
         TakesScreenshot scrShot =((TakesScreenshot)DriverManager.getDriver());
         File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
-        File destFile = new File("screenshots/" + name);
+        File destFile = new File("screenshots/" + name + ".png");
         FileUtils.copyFile(srcFile, destFile);
     }
 }
