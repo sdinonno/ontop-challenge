@@ -1,8 +1,5 @@
 package steps;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
 import context.Context;
 import context.TestContext;
 import io.cucumber.java.en.And;
@@ -15,7 +12,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static steps.Hooks.test;
 import static utils.Screenshots.takeScreenshot;
 
 public class ProductStepdefs {
